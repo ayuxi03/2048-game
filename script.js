@@ -81,6 +81,8 @@ function startGame() {
       if (bestMsg.innerText < score) bestMsg.innerText = score;
       this.mergeCell.remove()
       this.mergeCell = null
+      if (this.cell.value === 2048) alert("You win")
+      
     }
   }
 
