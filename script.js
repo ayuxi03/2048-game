@@ -170,6 +170,7 @@ function startGame() {
     // console.log(e.key)
     switch (e.key) {
       case "ArrowUp":
+        e.preventDefault()
         if (!canMoveUp()) {
           setupInput()
           return
@@ -177,6 +178,7 @@ function startGame() {
         await moveUp()
         break
       case "ArrowDown":
+        e.preventDefault()
         if (!canMoveDown()) {
           setupInput()
           return
