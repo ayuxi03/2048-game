@@ -112,7 +112,7 @@ function startGame() {
     #x
     #y
     #value
-    constructor (cellContainer, value = Math.random() > .4 ? 2 : 4) {
+    constructor (cellContainer, value = Math.random() > .3 ? 2 : 4) {
       this.#cellElement = document.createElement('div');
       this.#cellElement.classList.add('cell');
       cellContainer.append(this.#cellElement);
@@ -127,7 +127,7 @@ function startGame() {
       this.#value = v;
       this.#cellElement.textContent = v;
       const power = Math.log2(v);
-      // const backgroundLightness = 100 - power * 8;
+      
       for (let id in tileColors) {
         if (id == power) {
           this.#cellElement.style.backgroundColor = `${tileColors[id]}`;
@@ -135,9 +135,9 @@ function startGame() {
       }
 
       if (power >= 9) this.#cellElement.style.boxShadow = "#edc53f 0 0 25px"
-      // this.#cellElement.style.setProperty("--background-lightness",
-      //   `${backgroundLightness}%`
-      // )
+      if (power >= 7 && power < 10) this.#cellElement.style.fontSize = `6vmin`
+      if (power >= 10 && power < 14) this.#cellElement.style.fontSize = `5vmin`
+      if (power >= 14) this.#cellElement.style.fontSize = `4vmin`
       this.#cellElement.style.setProperty("color", `${power <= 2 ? '#776e65' : '#f9f6f2'}`);
       // this.#cellElement.style.setProperty("--text-lightness",
       //   `${backgroundLightness <= 70 ? 95 : 10}%`
