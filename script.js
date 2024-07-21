@@ -4,11 +4,6 @@ const scoreMsg = document.querySelector("#score-value")
 const bestMsg = document.querySelector("#best-value")
 let score = 0;
 
-// newGameBtn.addEventListener("click", () => {
-//   tile = [];
-
-// })
-
 function startGame() {
   function createTileElement(gameBoard) {
     const tiles = []
@@ -75,8 +70,8 @@ function startGame() {
       if (this.cell == null || this.mergeCell == null) return
       this.cell.value = 2 * this.cell.value 
       score += this.cell.value
-      console.log(score, scoreMsg.innerText)
-      console.log(this.cell.value)
+      // console.log(score, scoreMsg.innerText)
+      // console.log(this.cell.value)
       scoreMsg.innerText = score
       if (bestMsg.innerText < score) bestMsg.innerText = score;
       this.mergeCell.remove()
@@ -95,7 +90,7 @@ function startGame() {
   });
 
 
-  console.log('tiles =>', tiles)
+  // console.log('tiles =>', tiles)
 
   function getEmptyCells() {
     return tiles.filter(tile => tile.cell == null)
@@ -139,9 +134,6 @@ function startGame() {
       if (power >= 10 && power < 14) this.#cellElement.style.fontSize = `5vmin`
       if (power >= 14) this.#cellElement.style.fontSize = `4vmin`
       this.#cellElement.style.setProperty("color", `${power <= 2 ? '#776e65' : '#f9f6f2'}`);
-      // this.#cellElement.style.setProperty("--text-lightness",
-      //   `${backgroundLightness <= 70 ? 95 : 10}%`
-      // )
     }
 
     set x(value) {
@@ -175,7 +167,7 @@ function startGame() {
   }
 
   async function handleInput(e) {
-    console.log(e.key)
+    // console.log(e.key)
     switch (e.key) {
       case "ArrowUp":
         if (!canMoveUp()) {
@@ -217,7 +209,7 @@ function startGame() {
       newCell = new Cell(gameBoard)
       randomEmptyCell().cell = newCell
     }
-    console.log(newCell)
+    // console.log(newCell)
 
     if (!canMoveUp() && !canMoveDown() && !canMoveLeft() && !canMoveRight()) {
       newCell.waitForTransition(true).then(() => {
@@ -264,8 +256,8 @@ function startGame() {
     }, [])
   }
 
-  console.log(tilesByColumn())
-  console.log('Everything ok till here');
+  // console.log(tilesByColumn())
+  // console.log('Everything ok till here');
 
   function slideTiles(tiles) {
     return Promise.all(
