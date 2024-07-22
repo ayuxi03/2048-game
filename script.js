@@ -87,7 +87,7 @@ function startGame() {
         document.querySelector("#game-end-msg").innerText = "You Win!"
         document.querySelector("#try-again-btn").innerText = "Keep playing"
         document.querySelector("#try-again-btn").addEventListener("click", () => {
-          document.querySelector(".game-end").style.opacity = '0'
+          gameEndScreen.style.opacity = '0'
         })
       } 
       
@@ -355,7 +355,7 @@ function newGame() {
 }
 
 newGameBtn.addEventListener("click", () => {
-  document.querySelector(".game-end").style.opacity = '0'
+  gameEndScreen.style.opacity = '0'
   newGame();
 })
 
