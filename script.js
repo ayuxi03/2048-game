@@ -355,6 +355,7 @@ function newGame() {
 }
 
 newGameBtn.addEventListener("click", () => {
+  document.querySelector(".game-end").style.opacity = '0'
   newGame();
 })
 
