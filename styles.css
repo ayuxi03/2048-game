@@ -8,16 +8,6 @@ body {
   align-items: center;
 }
 
-.game {
-  padding-bottom: 5vmin;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  
-  /* border: solid;  */
-}
-
 h1 {
   font-size: 11vmin;
   margin: 0;
@@ -103,6 +93,7 @@ h1 {
 }
 
 .container {
+  z-index: 10;
   background-color:#ac9f93;
   height: 68vmin;
   width: 68vmin;
@@ -117,6 +108,28 @@ h1 {
   text-align: center;
   font-size: 8vmin;
   font-weight: bold;
+  margin-bottom: 15vmin;
+}
+
+.game-end {
+  /* display: none; */
+  margin-top: 0;
+  display: block;
+  opacity: 0;
+  z-index: 11;
+  height: 68vmin;
+  width: 68vmin;
+  position: absolute;
+  align-content: center;
+  text-align: center;
+  transition: 2000ms ease-in-out;
+  /* border: solid; */
+}
+
+.game-end p {
+  margin: 0;
+  font-size: 8vmin;
+  font-weight: 700;
 }
 
 .tile {
@@ -181,4 +194,14 @@ footer a i {
 
 footer a:hover {
   text-decoration: none;
+}
+
+.guide {
+  all: unset;
+  /* margin-top: 5vmin; */
+  font-size: 2.5vmin;
+  font-weight: 500;
+  color: #776e65;
+  width: 65vmin;
+  line-height: 5vmin;
 }

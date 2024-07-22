@@ -15,10 +15,12 @@
 </head>
 
 <body>
+  <a id="top"></a>
   <div class="game-desc">
     <div class="left-column">
       <h1>2048</h1>
       <p id="rule">Join the tiles, get to <strong>2048!</strong></p>
+      <p class="how-to-play" id="rule" style="cursor: pointer;"><strong><u>How to play →</u></strong></p>
     </div>
     <div class="right-column">
       <div class="stats">
@@ -36,9 +38,16 @@
       </div>
     </div>
   </div>
-
+  
   <div class="game">
+    
     <div class="container">
+
+      <div class="game-end">
+        <p id="game-end-msg"></p>
+        <button class="newgame-btn" id="try-again-btn"></button>
+      </div>
+
       <!-- <div class="tile"></div>
       <div class="tile"></div>
       <div class="tile"></div>
@@ -58,12 +67,14 @@
       <div class="cell">2</div> -->
     </div>
   </div>
+  
+  <p class="guide"><strong>HOW TO PLAY:</strong> Use your arrow keys to move the tiles. Tiles with the same number merge into one when they touch. Add them up to reach 2048!</p> 
+  <a href="#top" class="guide" style="cursor: pointer;"><strong><u>Start playing →</u></strong></a>
 
   <footer>
     <p>Created by <a href="https://github.com/ayuxi03/2048-game.git" target="_blank"><i class="fab fa-github"></i>ayuxi03</a>. Inspired from the original game by <strong>Gabrielle Cirulli</strong>. </p>
   </footer>
 
-  
   <script src="script.js" type="module"></script>
   <script src="colors.js"></script>
 </body>

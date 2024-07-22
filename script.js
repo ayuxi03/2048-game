@@ -2,9 +2,12 @@ const gameBoard = document.querySelector(".container");
 const newGameBtn = document.querySelector(".newgame-btn");
 const scoreMsg = document.querySelector("#score-value")
 const bestMsg = document.querySelector("#best-value")
+const gameEndScreen = document.querySelector(".game-end")
 let score = 0;
 
+
 function startGame() {
+  let hasRun = false
   function createTileElement(gameBoard) {
     const tiles = []
     for (let i = 0; i < 4 * 4; i++) {
@@ -76,7 +79,17 @@ function startGame() {
       if (bestMsg.innerText < score) bestMsg.innerText = score;
       this.mergeCell.remove()
       this.mergeCell = null
-      if (this.cell.value === 2048) alert("You win")
+      if (hasRun == false && this.cell.value === 2048) {
+        hasRun = true
+        gameEndScreen.style.backgroundColor = "rgba(251, 230, 0, 0.5)"
+        gameEndScreen.style.opacity = '1'
+        document.querySelector("#game-end-msg").style.color = "white"
+        document.querySelector("#game-end-msg").innerText = "You Win!"
+        document.querySelector("#try-again-btn").innerText = "Keep playing"
+        document.querySelector("#try-again-btn").addEventListener("click", () => {
+          document.querySelector(".game-end").style.opacity = '0'
+        })
+      } 
       
     }
   }
@@ -215,7 +228,19 @@ function startGame() {
 
     if (!canMoveUp() && !canMoveDown() && !canMoveLeft() && !canMoveRight()) {
       newCell.waitForTransition(true).then(() => {
-        alert("You lose")
+        // alert("You lose")
+        
+        // console.log("can access")
+        // console.log(gameEndScreen)
+        gameEndScreen.style.backgroundColor = "rgba(255, 255, 255, 0.5)"
+        gameEndScreen.style.opacity = '1'
+        document.querySelector("#game-end-msg").style.color = "#867a6e"
+        document.querySelector("#game-end-msg").innerText = "You Lose!"
+        document.querySelector("#try-again-btn").innerText = "Try again"
+        document.querySelector("#try-again-btn").addEventListener("click", () => {
+          document.querySelector(".game-end").style.opacity = '0'
+          newGame();
+        })
       })
       return
     }
@@ -320,9 +345,19 @@ function startGame() {
 
 startGame();
 
-newGameBtn.addEventListener("click", () => {
+function newGame() {
+  if (document.querySelector("#try-again-btn").innerText == "Keep playing") return
   gameBoard.innerHTML = ``;
+  gameBoard.append(gameEndScreen)
   score = 0;
   scoreMsg.innerText = 0;
   startGame();
+}
+
+newGameBtn.addEventListener("click", () => {
+  newGame();
 })
+
+document.querySelector(".how-to-play").addEventListener('click', () => {
+  document.querySelector(".guide").scrollIntoView({ behavior: 'smooth' });
+});
